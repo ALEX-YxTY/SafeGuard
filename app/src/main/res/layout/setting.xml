@@ -16,7 +16,63 @@
         android:layout_height="wrap_content"
         yxty:setTitle="设置自动更新"
         yxty:setDescOn="自动更新已开启"
+        yxty:setDescOff="自动更新已关闭"
         yxty:checked="true"/>
+
+    <com.exercise.yxty.safeguard.views.SettingItemView
+
+        android:id="@+id/siv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        yxty:setTitle="电话归属地显示设置"
+        yxty:setDescOn="归属地显示已开启"
+        yxty:setDescOff="归属地显示已关闭"
+        yxty:checked="false"/>
+
+    <com.exercise.yxty.safeguard.views.SettingItemView
+
+        android:id="@+id/siv_clean_cache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        yxty:setTitle="缓存清理悬浮窗显示设置"
+        yxty:setDescOn="缓存清理悬浮窗已开启"
+        yxty:setDescOff="缓存清理悬浮窗已关闭"
+        yxty:checked="false"/>
+
+    <com.exercise.yxty.safeguard.views.SettingItemView
+
+        android:id="@+id/siv_antivirus_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        yxty:setTitle="设置病毒库更新"
+        yxty:setDescOn="病毒库更新已开启"
+        yxty:setDescOff="病毒库更新已关闭"
+        yxty:checked="false"/>
+
+    <com.exercise.yxty.safeguard.views.SettingItemView
+
+        android:id="@+id/siv_app_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        yxty:setTitle="开启程序锁"
+        yxty:setDescOn="程序锁已开启"
+        yxty:setDescOff="程序锁已关闭"
+        yxty:checked="false"/>
+
+    <com.exercise.yxty.safeguard.views.SettingChoiceView
+        android:id="@+id/scv_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusableInTouchMode="true"
+        android:focusable="true"/>
+
+
+    <com.exercise.yxty.safeguard.views.SettingChoiceView
+        android:id="@+id/scv_positon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 
 </LinearLayout>

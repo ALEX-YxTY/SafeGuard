@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SIM卡变更后："
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
@@ -40,12 +40,13 @@
             android:background="@drawable/edittext_field_selector"
             />
 
+
         <Button
             android:id="@+id/bt_contact_choose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/contact_choose_bt_selector"
             android:text="选择联系人"
+            android:background="@drawable/contact_choose_bt_selector"
             android:gravity="center"
             android:textSize="22sp"
             />
@@ -89,6 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
+            android:textSize="22sp"
             android:text="下一步"
             android:background="@drawable/next_bt_selector"/>
 
@@ -99,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/next_bt_selector"
+            android:textSize="22sp"
             android:text="上一步"
 
             />

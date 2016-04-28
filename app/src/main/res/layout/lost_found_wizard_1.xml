@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="您的手机防盗卫士"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
@@ -82,6 +82,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:text="下一步"
+            android:textSize="22dp"
             android:background="@drawable/next_bt_selector"/>
 
     </RelativeLayout>

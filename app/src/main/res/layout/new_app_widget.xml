@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:padding="3dp"
+    android:background="@drawable/widget_bg_portrait"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/widget_bg_portrait_child">
+
+        <TextView
+            android:id="@+id/tv_process_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            style="@style/widget_text"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/widget_bg_portrait_child_divider"/>
+        <TextView
+            android:id="@+id/tv_memory_remain"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/widget_text"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginRight="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:background="@drawable/text_logo"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安全卫士"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_clear_process"
+            android:layout_width="100dp"
+            android:layout_height="33dp"
+            android:background="@drawable/function_bt_selector"
+            android:text="一键清理"
+            android:textColor="#fff"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.exercise.yxty.safeguard.activity.ShortcutManagerActivity">
+
+    <TextView
+        style="@style/Title_content"
+        android:text="一键呼叫"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1.点击“添加”,加入一键呼叫的联系人\n2.进入手机桌面，点击添加的联系人立即呼叫"
+        android:gravity="left"
+        android:textSize="16sp"
+        android:padding="20dp"
+        android:background="@drawable/text_background"
+    />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/lv_shortcut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <TextView
+            android:id="@+id/tv_list_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="一键联系人列表为空，快来添加吧！"
+            android:textSize="20sp"
+
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <Button
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="添加"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:onClick="add"/>
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="删除"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:onClick="delete"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

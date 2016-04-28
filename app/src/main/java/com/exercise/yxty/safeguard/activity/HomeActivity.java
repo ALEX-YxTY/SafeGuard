@@ -34,6 +34,7 @@ public class HomeActivity extends Activity {
         mPref = getSharedPreferences("config", MODE_PRIVATE);
         mEd = mPref.edit();
         gvHome = (GridView) findViewById(R.id.gv_home);
+        //用资源列表的方式引入字符串数组
         itemName = this.getResources().getStringArray(R.array.itemString);
         gvHome.setAdapter(new MyAdapter());
         gvHome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -47,6 +48,27 @@ public class HomeActivity extends Activity {
                         } else {
                             showInputPasswordDialog();
                         }
+                        break;
+                    case 1:
+                        startActivity(new Intent(HomeActivity.this, BlackList2.class));
+                        break;
+                    case 2:
+                        startActivity(new Intent(HomeActivity.this, AppManagerActivity.class));
+                        break;
+                    case 3:
+                        startActivity(new Intent(HomeActivity.this, ProcessManagerActivity.class));
+                        break;
+                    case 4:
+                        startActivity(new Intent(HomeActivity.this, TrafficStatsActivity.class));
+                        break;
+                    case 5:
+                        startActivity(new Intent(HomeActivity.this, AntiVirusActivity.class));
+                        break;
+                    case 6:
+                        startActivity(new Intent(HomeActivity.this, CacheClearActivity.class));
+                        break;
+                    case 7:
+                        startActivity(new Intent(HomeActivity.this, SeniorFunctionActivity.class));
                         break;
                     case 8:
                         Intent intent = new Intent(HomeActivity.this, SettingActivity.class);

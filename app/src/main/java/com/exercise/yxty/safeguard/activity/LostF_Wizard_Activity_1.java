@@ -12,7 +12,7 @@ import com.exercise.yxty.safeguard.R;
 /**
  * Created by Administrator on 2016/1/20.
  */
-public class LostF_Wizard_Activity_1 extends Activity{
+public class LostF_Wizard_Activity_1 extends BaseFlingActivity {
 
     Button btNext;
 
@@ -24,11 +24,20 @@ public class LostF_Wizard_Activity_1 extends Activity{
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(new Intent(LostF_Wizard_Activity_1.this, LostF_Wizard_Activity_2.class));
-                finish();
-                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+                showNextPage();
             }
         });
+    }
+
+    @Override
+    public void showNextPage() {
+        startActivity(new Intent(LostF_Wizard_Activity_1.this, LostF_Wizard_Activity_2.class));
+        finish();
+        overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+    }
+
+    @Override
+    public void showPreviousPage() {
+
     }
 }

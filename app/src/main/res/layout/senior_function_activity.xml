@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/Title_content"
+        android:text="高级工具"/>
+
+    <TextView
+        android:clickable="true"
+        style="@style/Photo_content"
+        android:text="电话归属地查询"
+        android:onClick="addressQuery"
+        />
+
+    <TextView
+        android:clickable="true"
+        style="@style/Photo_content"
+        android:text="短信备份"
+        android:onClick="smsBackup"
+        />
+
+    <ProgressBar
+        android:id="@+id/pb_sms_backup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:padding="10dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:clickable="true"
+        style="@style/Photo_content"
+        android:text="一键呼叫"
+        android:onClick="contactShortcut"
+        />
+
+    <TextView
+        style="@style/Photo_content"
+        android:text="程序锁"
+        android:onClick="lockApp"
+        android:clickable="true"
+
+        />
+
+
+</LinearLayout>

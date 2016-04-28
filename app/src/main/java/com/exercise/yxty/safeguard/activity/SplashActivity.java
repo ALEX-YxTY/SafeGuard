@@ -1,17 +1,25 @@
 package com.exercise.yxty.safeguard.activity;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.*;
 import android.content.pm.*;
 import android.net.Uri;
 import android.os.*;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.*;
 
 import com.exercise.yxty.safeguard.R;
+import com.exercise.yxty.safeguard.beans.VirusInfo;
+import com.exercise.yxty.safeguard.db.AntivirusDAO;
+import com.exercise.yxty.safeguard.service.AddressQueryService;
+import com.exercise.yxty.safeguard.service.AppLockService;
+import com.exercise.yxty.safeguard.service.CleanCacheService;
+import com.google.gson.Gson;
 import com.lidroid.xutils.*;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
@@ -21,7 +29,8 @@ import org.json.*;
 import java.io.*;
 import java.net.*;
 
-import com.exercise.yxty.safeguard.utils.StringUtils;
+import com.exercise.yxty.safeguard.utils.*;
+import com.lidroid.xutils.http.client.HttpRequest;
 
 
 public class SplashActivity extends AppCompatActivity {
@@ -76,15 +85,27 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        RelativeLayout rlSplash = (RelativeLayout) findViewById(R.id.rl_splash);
+        initialView();
+        downloadDB("address.db");
+        downloadDB("antivirus.db");
 
         sp = getSharedPreferences("config", MODE_PRIVATE);
-        tv_versionName = (TextView) findViewById(R.id.tv_versionName);
-        tv_versionName.setText("版本号：" + getVersionName());
 
-        AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
-        animation.setDuration(2000);
-        rlSplash.startAnimation(animation);
+        if (sp.getBoolean("showCallAddress", false)) {
+            startService(new Intent(this, AddressQueryService.class));
+        }
+
+        if (sp.getBoolean("cleanCache", false)) {
+            startService(new Intent(this, CleanCacheService.class));
+        }
+
+        if (sp.getBoolean("LockApps", false)) {
+            startService(new Intent(this, AppLockService.class));
+        }
+
+        if (sp.getBoolean("AntiVirusUpdate", false)) {
+            updateVirusDatabase();
+        }
 
         if (sp.getBoolean("update", true)) {
             checkVersion();
@@ -92,6 +113,68 @@ public class SplashActivity extends AppCompatActivity {
             Message msg = mHandler.obtainMessage(CODE_ENTER_HOME);
             mHandler.sendMessageDelayed(msg, 2000);
         }
+    }
+
+    private void updateVirusDatabase() {
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                HttpUtils httpUtils = new HttpUtils();
+                String url = "http://192.168.1.101:8888/VirusUpdate.json";
+                //使用HttpUtils的普通GET方法
+                httpUtils.send(HttpRequest.HttpMethod.GET, url, new RequestCallBack<String>() {
+                    @Override
+                    public void onSuccess(ResponseInfo<String> responseInfo) {
+                        try {
+                            Gson gson = new Gson();
+                            VirusInfo virusInfo = gson.fromJson(responseInfo.result, VirusInfo.class);
+                            AntivirusDAO dao = new AntivirusDAO();
+                            dao.add(virusInfo.getFileMd5(), virusInfo.getName(), virusInfo.getDesc());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(HttpException e, String s) {
+                        e.printStackTrace();
+                    }
+                });
+
+            }
+        }.start();
+    }
+
+    private void initialView() {
+        RelativeLayout rlSplash = (RelativeLayout) findViewById(R.id.rl_splash);
+        AlphaAnimation animation = new AlphaAnimation(0.3f, 1.0f);
+        animation.setDuration(2000);
+        rlSplash.startAnimation(animation);
+        tv_versionName = (TextView) findViewById(R.id.tv_versionName);
+        tv_versionName.setText("版本号：" + getVersionName());
+    }
+
+    private void downloadDB(final String dbName) {
+        final File file = new File(getFilesDir(), dbName);
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                if (!file.exists()) {
+                    try {
+                        InputStream is = getAssets().open(dbName);
+                        FileOutputStream fos =  new FileOutputStream(file);
+                        IOUtils.write(fos, is);
+                    }  catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else {
+                    System.out.println(dbName +"数据库已存在");
+                }
+            }
+        };
+        thread.start();
     }
 
     /**
@@ -122,6 +205,7 @@ public class SplashActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             return -1;
         }
+
     }
 
     /**
@@ -135,7 +219,7 @@ public class SplashActivity extends AppCompatActivity {
                 Message msg = Message.obtain();
                 HttpURLConnection connection = null;
                 try {
-                    URL url = new URL("http://192.168.1.100:8888/versionDetail.json");
+                    URL url = new URL("http://192.168.1.101:8888/versionDetail.json");
                     connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
                     connection.setConnectTimeout(5000);
@@ -218,7 +302,7 @@ public class SplashActivity extends AppCompatActivity {
         builder.setPositiveButton("下载更新", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                downLoad();
+                downLoadUpdate();
             }
         });
         builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -230,7 +314,7 @@ public class SplashActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void downLoad() {
+    private void downLoadUpdate() {
 
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ) {
             tv_progress = (TextView) findViewById(R.id.tv_progress);

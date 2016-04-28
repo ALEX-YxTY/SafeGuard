@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="com.exercise.yxty.safeguard.activity.ProcessManagerSettingActivity">
+
+    <TextView
+        style="@style/Title_content"
+        android:text="进程管理设置"/>
+
+    <include
+        android:id="@+id/rl_show_system_process"
+        layout="@layout/setting_single_text_item" />
+
+    <com.exercise.yxty.safeguard.views.SettingItemView
+        android:id="@+id/siv_timer_clear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:setTitle="定时清理进程"
+        app:setDescOff="已关闭"
+        app:setDescOn="已开启"/>
+
+    <com.exercise.yxty.safeguard.views.SettingChoiceView
+        android:id="@+id/scv_timer_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/tv_clear_log_time"
+        android:layout_marginTop="20dp"
+        android:textColor="#c000"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上次清理时间:"/>
+    <TextView
+        android:id="@+id/tv_clear_log"
+        android:textColor="#c000"
+        android:textSize="15sp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="上次清理时间:"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#c000"
+        android:textSize="15sp"
+        android:text="关闭长时间未使用的进程，并定时进行清理，可以释放系统资源，提升手机运行速度"/>
+
+
+</LinearLayout>

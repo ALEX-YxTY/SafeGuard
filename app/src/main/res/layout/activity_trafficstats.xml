@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TrafficStatsActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/Title_content"
+        android:text="流量统计"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_title">
+
+        <ListView
+            android:id="@+id/lv_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#1000">
+        </ListView>
+
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+
+</RelativeLayout>
+

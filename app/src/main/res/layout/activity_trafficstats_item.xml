@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    android:background="#bbb"
+    >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/iv_icon"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_app_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="APPName"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:padding="4dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_download"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CacheSize"
+                android:textSize="14sp"
+                android:padding="4dp"/>
+            <TextView
+                android:id="@+id/tv_upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CacheSize"
+                android:textSize="14sp"
+                android:padding="4dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

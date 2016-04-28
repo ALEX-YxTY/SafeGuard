@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="通过绑定SIM卡"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
@@ -32,6 +32,9 @@
             android:layout_marginTop="10dp" />
 
         <com.exercise.yxty.safeguard.views.SettingItemView
+            android:id="@+id/siv_sim"
+            android:clickable="true"
+            android:onClick="bindSim"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,6 +83,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:text="下一步"
+            android:textSize="22sp"
             android:background="@drawable/next_bt_selector"/>
 
         <Button
@@ -89,6 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/next_bt_selector"
+            android:textSize="22sp"
             android:text="上一步"
 
             />

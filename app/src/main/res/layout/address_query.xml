@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/Title_content"
+        android:text="归属地查询"/>
+
+    <EditText
+        android:id="@+id/et_input_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="请输入号码"
+        android:inputType="number"
+        android:background="@drawable/edittext_field_selector"/>
+
+    <Button
+        android:id="@+id/bt_query_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="查询"/>
+
+    <TextView
+        android:id="@+id/tv_show_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:padding="5dp"/>
+
+
+
+</LinearLayout>

@@ -13,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -21,6 +22,7 @@
             android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="false"
             android:clickable="false"
             android:focusable="false"
             android:focusableInTouchMode="false"/>
@@ -31,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="你没有开启防盗保护"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:textColor="@color/black"
             android:layout_marginLeft="5dp"/>
 
@@ -75,6 +77,7 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:text="设置完成"
+            android:textSize="22sp"
             android:background="@drawable/next_bt_selector"/>
 
         <Button
@@ -84,6 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/next_bt_selector"
+            android:textSize="22sp"
             android:text="上一步"
 
             />
